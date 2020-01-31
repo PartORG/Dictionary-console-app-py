@@ -1,4 +1,5 @@
 import json
+from colorama import Fore, Back, Style
 from difflib import get_close_matches
 
 data = json.load(open("data.json"))
@@ -23,12 +24,13 @@ def translate(word):
     else:
         return "The word does not exist. Please, double check it."
 
-word = input("Enter word: ")
+word = input(Fore.GREEN + "Enter word: ")
+print(Fore.BLUE + "Meaning:" + Style.RESET_ALL)
 
 output = translate(word)
 
 if type(output) == list:
     for item in output:
-        print(item)
+        print(Fore.MAGENTA + item + Style.RESET_ALL)
 else:
-    print(output)
+    print(Fore.MAGENTA + output + Style.RESET_ALL)
